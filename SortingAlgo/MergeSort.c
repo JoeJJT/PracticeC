@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Merge(int *A,int *L,int leftCount,int *R,int rightCount) {
+void Merge(int *M,int *L,int leftCount,int *R,int rightCount) {
 	int i,j,k;
 	
 	i = j = k = 0;
 	while(i<leftCount && j<rightCount) {
 		if( L[i] < R[j] ) {
-			A[k++] = L[i++];
+			M[k++] = L[i++];
 		}
 		else {
-			A[k++] = R[j++];
+			M[k++] = R[j++];
 		}
 	}
-	while(i < leftCount) A[k++] = L[i++];
-	while(j < rightCount) A[k++] = R[j++];
+	while(i < leftCount) M[k++] = L[i++];
+	while(j < rightCount) M[k++] = R[j++];
 }
 
-void MergeSort(int *A,int n) {
+void MergeSort(int *M,int n) {
 	int i,mid,*L,*R;
 	
 	if(n<2) return;	
@@ -27,28 +27,45 @@ void MergeSort(int *A,int n) {
 	L = (int*)malloc(mid * sizeof(int));
 	R = (int*)malloc((n-mid) * sizeof(int));
 	
-	for(i=0; i<mid; i++) L[i] = A[i];
-	for(i=mid; i<n; i++) R[i-mid] = A[i];
+	for(i=0; i<mid; i++) L[i] = M[i];
+	for(i=mid; i<n; i++) R[i-mid] = M[i];
 	
 	MergeSort(L,mid);
 	MergeSort(R,n-mid);
-	Merge(A,L,mid,R,n-mid);
+	Merge(M,L,mid,R,n-mid);
 
 	free(L);
 	free(R);	
 }
 
+void print(int *M,int n) {
+	int i;
+	for(i=0; i<n; i++) {
+		printf("%d\t",M[i]);
+	}
+	printf("\n");
+}
+
 int main() {
 	
 	int A[] = {5,6,223,75,235,7,824,145,8};
-	int i,numOfElement;
+	int B[] = {93,777,35,45,56};
+	int i,numOfElementA,numOfElementB,num;
 	
-	numOfElement = sizeof(A) / sizeof(A[0]);
+	numOfElementA = sizeof(A) / sizeof(A[0]);
+	numOfElementB = sizeof(B) / sizeof(B[0]);
+	num = numOfElementA + numOfElementB;
 	
-	for(i=0;i<numOfElement;i++) printf("%d ",A[i]);
-	printf("\n");
-	MergeSort(A,numOfElement);
-	for(i=0;i<numOfElement;i++) printf("%d ",A[i]);	
-	printf("\n");
+	int M[num] ;
+	
+	print(A,numOfElementA);
+	print(B,numOfElementB);
+	for(i=0; i<numOfElementA; i++) M[i] = A[i];
+	for(i=numOfElementA; i<num; i++) M[i] = B[i-numOfElementA]; 
+	print(M,num);
+	MergeSort(M,num);
+	
+	print(M,num);
+	
 	return 0;
 }
