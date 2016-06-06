@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct Node {
-	int val;
-	struct Node *next;
-}node;
+#include "linkedlist.h"
 
 node* createNode(int val) {
 	node* n = (node*) malloc(sizeof(node));
@@ -12,15 +8,32 @@ node* createNode(int val) {
 	n->next = NULL;
 	return n;
 }
-
+/*insert Node2 after Node1*/
 void insertNode(node* n1,node* n2) {
-	n2->next = n1->next;
 	n1->next = n2;
+}
+
+void insertNsort(node *list,node *n) {
+	if(list->val > n->val)
+		n->next = list;
+	while(list) {
+		if(list->val < n->val) {
+			list = list->next;
+		}
+	}
+	list = n; 
 }
 
 void removeNode(node* list,node* n) {
 	list->next = n->next;
 	free(n);
+}
+
+void freeList(node* list) {
+	while(list) {
+		free(list);
+		list = list->next;
+	}
 }
 
 void printList(node* list) {
@@ -29,13 +42,23 @@ void printList(node* list) {
 		printf("%d->",n->val);
 		n = n->next;
 	}
-	printf("\n");
+	printf("NULL\n");
 }
 
 int main(int argc,int **argv) {
-	node* list = createNode(0);
-	node* a = createNode(6);
-	insertNode(list,a);
-	printList(list);		
+	int A[] = {0,6,2,3,9,4};
+	int size = sizeof(A)/sizeof(A[0]);
+	int i;
+	node* head = createNode(A[0]);
+	node* list = head;
+	for(i=1;i<size;i++) {
+		node* n = createNode(A[i]);
+		insertNode(list,n);
+		list = list->next;
+	}	
+	//insertNsort(list,a);
+	//insertNsort(list,b);
+	printList(head);
+	freeList(head);		
 	return 0;
 }
