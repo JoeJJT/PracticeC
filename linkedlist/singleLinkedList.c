@@ -14,20 +14,25 @@ void insertNode(node* n1,node* n2) {
 	n1->next = n2;
 }
 
-void insertNsort(node* list,int num) {
+node* insertNsort(node* list,int num) {
 	node* n = createNode(num);
+	node* head = list;
 	node* p = list;
-	if(list->val > n->val) {
-		insertNode(n,p);
+	if(head->val > n->val) {
+		n->next = head;
+		head = n;
 	}
-	while(list) {
-		if(list->val < n->val) {
-			p = list;
-			list = list->next;
+	else {
+		while(list) {
+			if(list->val < n->val) {
+				p = list;
+				list = list->next;
+			}
+			else break;
 		}
-		else break;
+		insertNode(p,n);
 	}
-	insertNode(p,n);
+	return head;
 }
 
 void removeNode(node* list,node* n) {
@@ -52,17 +57,17 @@ void printList(node* list) {
 }
 
 int main(int argc,int **argv) {
-	int A[] = {0,6,2,3,9,4};
+	int A[] = {0,6,2,3,9,4,-2,-5};
 	int size = sizeof(A)/sizeof(A[0]);
 	int i;
 	node* head = createNode(A[0]);
 	node* list = head;
 	
 	for(i=1;i<size;i++) {
-		insertNsort(head,A[i]);
+		head = insertNsort(head,A[i]);
 	}	
 	printList(head);
-	insertNsort(head,-1);
+	head = insertNsort(head,-1);
 	printList(head);
 	freeList(head);		
 	return 0;
