@@ -1,4 +1,4 @@
-EXEC = singleLinkedList
+EXEC = singleLinkedList doubleLinkedList
 all : $(EXEC)
 
 clean:

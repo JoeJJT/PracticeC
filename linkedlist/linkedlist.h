@@ -8,7 +8,7 @@ typedef struct Node {
 }node;
 
 node* createNode(int );
-void insertNode(node* ,node* );
+//void insertNode(node* ,node* );
 void removeNode(node* ,node* );
 void freeList(node* );
 void printList(node* );
