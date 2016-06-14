@@ -3,8 +3,20 @@
 
 #if defined(List)
 #include "../lib/linkedlist.h"
-//#if defined(List)
-void L_bubbleSort() {
+node* createList(int *A,int size) {
+	int i;
+	node* head = createNode(A[0]);
+	node* p = head;
+	node* n;
+	for(i=1; i<size ;i++) {
+		n = createNode(A[i]);
+		insertNode(p,n);	
+		p = p->next;
+	}
+	return head;
+}
+
+void L_bubbleSort(node* list) {
 
 }
 #endif
@@ -41,8 +53,10 @@ int main(int *argc,int **argv) {
 	print(A,size);
 #endif
 #if defined(List)
-	node* n = createNode(A[0]);
-	L_bubbleSort();
+	node* list = createList(A,size);
+	printList(list);
+	L_bubbleSort(list);
+	printList(list);
 #endif
 	return 0;
 }
