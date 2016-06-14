@@ -1,7 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void bubbleSort(int *A,int n) {
+#if defined(List)
+#include "../lib/linkedlist.h"
+//#if defined(List)
+void L_bubbleSort() {
+
+}
+#endif
+#if defined(Array)
+void A_bubbleSort(int *A,int n) {
 	int i,j;
 	int tmp;
 	for(i=0; i<n; i++) {
@@ -22,16 +30,19 @@ void print(int *A,int n) {
 	}
 	printf("\n");
 }
+#endif
 
 int main(int *argc,int **argv) {
 	int A[] = {2,4,3,6,1,7,9,8,0};
 	int size = sizeof(A) / sizeof(A[0]);
 
 #if defined(Array)		
-	bubbleSort(A,size);
+	A_bubbleSort(A,size);
 	print(A,size);
 #endif
 #if defined(List)
+	node* n = createNode(A[0]);
+	L_bubbleSort();
 #endif
 	return 0;
 }

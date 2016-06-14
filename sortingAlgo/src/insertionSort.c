@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../lib/linkedlist.h"
 
+#if defined(List)
 node* createNode(int val) {
 	node* n = (node*) malloc(sizeof(node));
 	n->val = val;
@@ -55,11 +56,12 @@ void printList(node* list) {
 	}
 	printf("NULL\n");
 }
-
+#endif
 int main(int argc,int **argv) {
 	int A[] = {0,6,2,3,9,4,-2,-5};
 	int size = sizeof(A)/sizeof(A[0]);
 	int i;
+#if defined(List)
 	node* head = createNode(A[0]);
 	node* list = head;
 	
@@ -71,5 +73,6 @@ int main(int argc,int **argv) {
 	head = insertNsort(head,-1);
 	printList(head);
 	freeList(head);		
+#endif
 	return 0;
 }
