@@ -3,7 +3,7 @@
 #include <time.h>
 #include <assert.h>
 #include <stddef.h>
-#include "BinaryTree.h"
+#include "../lib/BinaryTree.h"
 
 extern void rec_flatten(TreeNode *root);
 extern void iter_flatten(TreeNode *root);
