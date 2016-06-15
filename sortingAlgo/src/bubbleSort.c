@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#if defined(List)
 #include "../lib/linkedlist.h"
+#if defined(List)
 node* createList(int *A,int size) {
 	int i;
 	node* head = createNode(A[0]);

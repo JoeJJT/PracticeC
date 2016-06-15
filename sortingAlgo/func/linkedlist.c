@@ -34,3 +34,4 @@ void printList(node* list) {
 	}
 	printf("NULL\n");
 }
+

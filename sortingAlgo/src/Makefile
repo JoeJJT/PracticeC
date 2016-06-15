@@ -1,17 +1,12 @@
 FUNC = ../func
-LIB = ../lib
 
 CFLAGS= -O0 -std=gnu99
-EXEC = mergeSort insertionSort bubbleSort
+EXEC = bubbleSort insertionSort mergeSort
 
-all				:$(EXEC)
+all:$(EXEC)
 
-bubbleSort		: bubbleSort.o
-
-bubbleSort.o	: bubbleSort.c $(LIB)/linkedlist.h
-	$(CC) $(CFLAGS) -c -DArray -DList  bubbleSort.c \
-	$(FUNC)/linkedlist.c 
-#bubbleSort.o	: $(LIB)/linkedlist.h
+bubbleSort: bubbleSort.c $(FUNC)/linkedlist.c
+	$(CC) $(CFLAGS) -DList -DArray $^ -o bubbleSort
 
 clean:
 	$(RM) $(EXEC) *.o
