@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Merge(int *M,int *L,int leftCount,int *R,int rightCount) {
+void merge(int *M,int *L,int leftCount,int *R,int rightCount) {
 	int i,j,k;
 	
 	i = j = k = 0;
@@ -17,7 +17,7 @@ void Merge(int *M,int *L,int leftCount,int *R,int rightCount) {
 	while(j < rightCount) M[k++] = R[j++];
 }
 
-void MergeSort(int *M,int n) {
+void mergeSort(int *M,int n) {
 	int i,mid,*L,*R;
 	
 	if(n<2) return;	
@@ -30,14 +30,14 @@ void MergeSort(int *M,int n) {
 	for(i=0; i<mid; i++) L[i] = M[i];
 	for(i=mid; i<n; i++) R[i-mid] = M[i];
 	
-	MergeSort(L,mid);
-	MergeSort(R,n-mid);
-	Merge(M,L,mid,R,n-mid);
+	mergeSort(L,mid);
+	mergeSort(R,n-mid);
+	merge(M,L,mid,R,n-mid);
 
 	free(L);
 	free(R);	
 }
-
+/*
 void print(int *M,int n) {
 	int i;
 	for(i=0; i<n; i++) {
@@ -68,4 +68,4 @@ int main() {
 	print(M,num);
 	
 	return 0;
-}
+}*/

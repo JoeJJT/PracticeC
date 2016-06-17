@@ -8,6 +8,20 @@ node* createNode(int val) {
 	n->next = NULL;
 	return n;
 }
+
+node* createList(int *A,int size) {
+    int i;
+    node* head = createNode(A[0]);
+    node* p = head;
+    node* n;
+    for(i=1; i<size ;i++) {
+        n = createNode(A[i]);
+        insertNode(p,n);
+        p = p->next;
+    }
+    return head;
+}
+
 /*insert Node2 after Node1*/
 void insertNode(node* n1,node* n2) {
 	n2->next = n1->next;
