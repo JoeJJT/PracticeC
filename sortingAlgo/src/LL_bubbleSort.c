@@ -3,15 +3,16 @@
 #include "../lib/linkedlist.h"
 
 void bubbleSort(node* list) {
-    node* p = list;
+    node* p;
     node* x = list;
     int temp;
     while(x) {
+		p = list;
         while(p) {
-            if(p->val > p->next->val) {
-                temp = p->val;
-                p->val = p->next->val;
-                p->next->val = temp;    
+            if(x->val < p->val) {
+                temp = x->val;
+                x->val = p->val;
+                p->val = temp;    
             }
             p = p->next;
         }

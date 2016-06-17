@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../lib/linkedlist.h"
-#if defined(Array)
 void bubbleSort(int *A,int n) {
 	int i,j;
 	int tmp;
@@ -15,4 +14,3 @@ void bubbleSort(int *A,int n) {
 		}
 	}
 }
-#endif
