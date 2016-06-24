@@ -37,35 +37,3 @@ void mergeSort(int *M,int n) {
 	free(L);
 	free(R);	
 }
-/*
-void print(int *M,int n) {
-	int i;
-	for(i=0; i<n; i++) {
-		printf("%d\t",M[i]);
-	}
-	printf("\n");
-}
-
-int main() {
-	
-	int A[] = {5,6,223,75,235,7,824,145,8};
-	int B[] = {93,777,35,45,56};
-	int i,numOfElementA,numOfElementB,num;
-	
-	numOfElementA = sizeof(A) / sizeof(A[0]);
-	numOfElementB = sizeof(B) / sizeof(B[0]);
-	num = numOfElementA + numOfElementB;
-	
-	int M[num] ;
-	
-	print(A,numOfElementA);
-	print(B,numOfElementB);
-	for(i=0; i<numOfElementA; i++) M[i] = A[i];
-	for(i=numOfElementA; i<num; i++) M[i] = B[i-numOfElementA]; 
-	print(M,num);
-	MergeSort(M,num);
-	
-	print(M,num);
-	
-	return 0;
-}*/

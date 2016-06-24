@@ -13,56 +13,51 @@ int main(int *argc,int **argv) {
 	}
 	printf("\n");
 #if defined(Array)
-{
+
 #if defined(Bubble)
-	{ 
-    	bubbleSort(A,size);
-	}
+   	bubbleSort(A,size);
 #endif
 
 #if defined(Merge)
-	{
-		mergeSort(A,size);
-	}
+	mergeSort(A,size);
 #endif
 
 #if defined(Insertion)
+	insertionSort(A,size);
 #endif
 #if defined(Quick)
 #endif
-	printf("After Sort:");
+	printf("After Sort\t:\t");
     print(A,size);
-}
+
 #endif
 
 #if defined(List)
 
 #if defined(Insertion)
 	
-    	node* head = createNode(A[0]);
-    	node* list = head;
-    	for(i=1;i<size;i++) {
-        	head = insertNsort(head,A[i]);
-    	}   
-    	printList(head);
-    	printf("after insert -1\n");
-    	head = insertNsort(head,-1);
+   	node* head = createNode(A[0]);
+   	node* list = head;
+   	for(i=1;i<size;i++) {
+       	head = insertNsort(head,A[i]);
+   	}   
+   	printList(head);
+   	printf("after insert -1\n");
+   	head = insertNsort(head,-1);
 	
 #endif
 
 #if defined(Bubble)
 	
-    	node* head = createList(A,size);
-		printf("Raw List\t:\t");
-    	printList(head);
-		printf("After Sort\t:\t");
-    	bubbleSort(head);
+   	node* head = createList(A,size);
+	printf("Raw List\t:\t");
+   	printList(head);
+	printf("After Sort\t:\t");
+   	bubbleSort(head);
 
 #endif
-
     printList(head);
 	freeList(head);
-
 #endif
     return 0;
 }

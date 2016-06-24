@@ -19,3 +19,4 @@ void bubbleSort(node* list) {
         x = x->next;
     }   
 }
+
